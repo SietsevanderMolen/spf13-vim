@@ -32,8 +32,8 @@
     " Setup Bundle Support {
     " The next three lines ensure that the ~/.vim/bundle/ system works
         filetype off
-        set rtp+=~/.vim/bundle/vundle
-        call vundle#rc()
+        set rtp+=$XDG_CONFIG_HOME/vim/bundle/vundle
+        call vundle#rc("$XDG_CONFIG_HOME/vim/bundle")
     " }
 
 " }
@@ -51,13 +51,13 @@
         endif
 
     " Use local bundles if available {
-        if filereadable(expand("~/.vimrc.bundles.local"))
-            source ~/.vimrc.bundles.local
+        if filereadable(expand("$XDG_CONFIG_HOME/vim/vimrc.bundles.local"))
+            source $XDG_CONFIG_HOME/vim/vimrc.bundles.local
         endif
     " }
     " Use fork bundles if available {
-        if filereadable(expand("~/.vimrc.bundles.fork"))
-            source ~/.vimrc.bundles.fork
+        if filereadable(expand("$XDG_CONFIG_HOME/vim/vimrc.bundles.fork"))
+            source $XDG_CONFIG_HOME/vim/vimrc.bundles.fork
         endif
     " }
 
@@ -115,8 +115,8 @@
             Bundle 'garbas/vim-snipmate'
             Bundle 'honza/snipmate-snippets'
             " Source support_function.vim to support snipmate-snippets.
-            if filereadable(expand("~/.vim/bundle/snipmate-snippets/snippets/support_functions.vim"))
-                source ~/.vim/bundle/snipmate-snippets/snippets/support_functions.vim
+            if filereadable(expand("$XDG_CONFIG_HOME/vim/bundle/snipmate-snippets/snippets/support_functions.vim"))
+                source $XDG_CONFIG_HOME/vim/bundle/snipmate-snippets/snippets/support_functions.vim
             endif
         elseif count(g:spf13_bundle_groups, 'neocomplcache')
             Bundle 'Shougo/neocomplcache'

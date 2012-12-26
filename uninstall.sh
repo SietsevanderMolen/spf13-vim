@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-endpath="$HOME/.spf13-vim-3"
+endpath="$XDG_CONFIG_HOME/spf13-vim-3"
 
 warn() {
     echo "$1" >&2
@@ -11,8 +11,8 @@ die() {
     exit 1
 }
 
-rm $HOME/.vimrc
-rm $HOME/.vimrc.bundles
-rm $HOME/.vim
+rm -rf $XDG_CONFIG_HOME/vimrc
+rm -rf $XDG_CONFIG_HOME/vimrc.bundles
+rm -rf $XDG_CONFIG_HOME/vim
 
 rm -rf $endpath

@@ -18,6 +18,7 @@
 " Environment {
     " Basics {
         set nocompatible        " must be first line
+        let viminfopath=$VIM."\\_viminfo"
     " }
 
     " Windows Compatible {
@@ -32,7 +33,7 @@
     " The next three lines ensure that the ~/.vim/bundle/ system works
         filetype on
         filetype off
-        set rtp+=~/.vim/bundle/vundle
+        set rtp+=$XDG_CONFIG_HOME/vim/bundle/vundle
         call vundle#rc()
     " }
 
@@ -40,18 +41,18 @@
 
 " Bundles {
     " Use local bundles if available {
-        if filereadable(expand("~/.vimrc.bundles.local"))
-            source ~/.vimrc.bundles.local
+        if filereadable(expand("$XDG_CONFIG_HOME/vim/vimrc.bundles.local"))
+            source $XDG_CONFIG_HOME/vim/vimrc.bundles.local
         endif
     " }
     " Use fork bundles if available {
-        if filereadable(expand("~/.vimrc.bundles.fork"))
-            source ~/.vimrc.bundles.fork
+        if filereadable(expand("$XDG_CONFIG_HOME/vim/vimrc.bundles.fork"))
+            source $XDG_CONFIG_HOME/vim/vimrc.bundles.fork
         endif
     " }
     " Use bundles config {
-        if filereadable(expand("~/.vimrc.bundles"))
-            source ~/.vimrc.bundles
+        if filereadable(expand("$XDG_CONFIG_HOME/vim/vimrc.bundles"))
+            source $XDG_CONFIG_HOME/vim/vimrc.bundles
         endif
     " }
 " }
@@ -111,7 +112,7 @@
 " }
 
 " Vim UI {
-    if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
+    if filereadable(expand("$XDG_CONFIG_HOME/vim/bundle/vim-colors-solarized/colors/solarized.vim"))
         let g:solarized_termcolors=256
         color solarized                 " load a colorscheme
     endif
@@ -321,7 +322,7 @@
     " }
 
     " Ctags {
-        set tags=./tags;/,~/.vimtags
+        set tags=./tags;/,$XDG_CONFIG_HOME/vimtags
     " }
 
     " AutoCloseTag {
@@ -439,8 +440,8 @@
         " Define dictionary.
         let g:neocomplcache_dictionary_filetype_lists = {
             \ 'default' : '',
-            \ 'vimshell' : $HOME.'/.vimshell_hist',
-            \ 'scheme' : $HOME.'/.gosh_completions'
+            \ 'vimshell' : $XDG_CONFIG_HOME.'/vim/vimshell_hist',
+            \ 'scheme' : $XDG_CONFIG_HOME.'/vim/gosh_completions'
             \ }
 
         " Define keyword.
@@ -488,7 +489,7 @@
         let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
 
         " use honza's snippets
-        let g:neosnippet#snippets_directory='~/.vim/bundle/snipmate-snippets/snippets'
+        let g:neosnippet#snippets_directory='$XDG_CONFIG_HOME/vim/bundle/snipmate-snippets/snippets'
 
         " For snippet_complete marker.
         if has('conceal')
@@ -550,8 +551,8 @@ com! -nargs=+         UnBundle
 
 function! InitializeDirectories()
     let separator = "."
-    let parent = $HOME
-    let prefix = '.vim'
+    let parent = $XDG_CONFIG_HOME
+    let prefix = 'vim/'
     let dir_list = {
                 \ 'backup': 'backupdir',
                 \ 'views': 'viewdir',
@@ -594,7 +595,7 @@ endfunction
 " Strip whitespace
 function! StripTrailingWhitespace()
     " To disable the stripping of whitespace, add the following to your
-    " .vimrc.local file:
+    " .\vimrc.local file:
     "   let g:spf13_keep_trailing_whitespace = 1
     if !exists('g:spf13_keep_trailing_whitespace')
         " Preparation: save last search, and cursor position.
@@ -612,21 +613,21 @@ endfunction
 " }
 
 " Use fork vimrc if available {
-    if filereadable(expand("~/.vimrc.fork"))
-        source ~/.vimrc.fork
+    if filereadable(expand("$XDG_CONFIG_HOME/vim/vimrc.fork"))
+        source $XDG_CONFIG_HOME/vim/vimrc.fork
     endif
 " }
 
 " Use local vimrc if available {
-    if filereadable(expand("~/.vimrc.local"))
-        source ~/.vimrc.local
+    if filereadable(expand("$XDG_CONFIG_HOME/vimrc.local"))
+        source $XDG_CONFIG_HOME/vim/vimrc.local
     endif
 " }
 
 " Use local gvimrc if available and gui is running {
     if has('gui_running')
-        if filereadable(expand("~/.gvimrc.local"))
-            source ~/.gvimrc.local
+        if filereadable(expand("$XDG_CONFIG_HOME/vim/gvimrc.local"))
+            source $XDG_CONFIG_HOME/vim/gvimrc.local
         endif
     endif
 " }
