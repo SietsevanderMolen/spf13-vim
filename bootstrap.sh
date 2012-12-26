@@ -27,7 +27,7 @@ for i in $XDG_CONFIG_HOME/vim $XDG_CONFIG_HOME/vimrc $XDG_CONFIG_HOME/gvimrc; do
 
 if [ ! -e $endpath/.git ]; then
     echo "cloning spf13-vim"
-    git clone --recursive -b 3.0 https://github.com/SietsevanderMolen/spf13-vim.git $endpath
+    git clone --recursive -b xdg_basedir_support https://github.com/SietsevanderMolen/spf13-vim.git $endpath
 else
     echo "updating spf13-vim"
     cd $endpath && git pull
